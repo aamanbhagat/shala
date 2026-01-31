@@ -141,7 +141,7 @@ export default function BiologyChaptersPage() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <Link href={`/boards/msbshse/class-12/biology/chapter-${chapter.number}`}>
+              <Link href={`/boards/msbshse/class-12/english/biology/chapter-${chapter.number}`}>
                 <Card className="p-6 hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
                   <div className="flex items-start gap-4">
@@ -162,8 +162,8 @@ export default function BiologyChaptersPage() {
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {chapter.keyTopics.map((topic, i) => (
-                          <span 
-                            key={i} 
+                          <span
+                            key={i}
                             className="text-xs px-2 py-1 rounded-full bg-background border group-hover:border-primary/50 transition-colors duration-300"
                           >
                             {topic}
@@ -178,7 +178,7 @@ export default function BiologyChaptersPage() {
           ))}
         </div>
 
-         {/* Rich Content for SEO */}
+        {/* Rich Content for SEO */}
         <div className="mt-24">
           <h3 className="text-2xl font-semibold mb-4 text-center">Chapter Overview</h3>
           <div className="overflow-x-auto">
@@ -262,7 +262,7 @@ export default function BiologyChaptersPage() {
 
           <div className="mt-8 space-y-6">
             <h3 className="text-2xl font-semibold mb-4 text-center">Study Tips and Resources</h3>
-            
+
             <div className="bg-accent/30 p-6 rounded-lg">
               <h4 className="font-semibold mb-3">Effective Study Strategies</h4>
               <ul className="list-disc pl-6 space-y-2">

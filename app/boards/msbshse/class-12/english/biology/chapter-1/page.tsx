@@ -13,35 +13,35 @@ export default function Chapter1Page() {
       title: "Textbook Solutions",
       description: "Step-by-step solutions to textbook problems",
       icon: BookText,
-      href: "chapter-1/text-book-solutions",
+      href: "/boards/msbshse/class-12/english/biology/chapter-1/text-book-solutions",
       color: "from-blue-500 to-cyan-500"
     },
     {
       title: "Question Bank",
       description: "Practice questions with detailed solutions",
       icon: HelpCircle,
-      href: "chapter-1/questions",
+      href: "/boards/msbshse/class-12/english/biology/chapter-1/questions-bank",
       color: "from-purple-500 to-pink-500"
     },
     {
       title: "Important Questions",
       description: "Key questions for exam preparation",
       icon: CheckCircle2,
-      href: "chapter-1/important-questions",
+      href: "/boards/msbshse/class-12/english/biology/chapter-1/important-questions",
       color: "from-orange-500 to-red-500"
     },
     {
       title: "Previous Year Papers",
       description: "Questions from past examinations",
       icon: FileText,
-      href: "chapter-1/previous-papers",
+      href: "/boards/msbshse/class-12/english/biology/chapter-1/previous-year-questions",
       color: "from-green-500 to-emerald-500"
     },
     {
       title: "Notes",
       description: "Comprehensive chapter notes and explanations",
       icon: BookOpen,
-      href: "chapter-1/notes",
+      href: "/boards/msbshse/class-12/english/biology/chapter-1/notes",
       color: "from-yellow-500 to-amber-500"
     }
   ];
@@ -66,12 +66,12 @@ export default function Chapter1Page() {
         >
           <div className="mb-8">
             <Button variant="ghost" asChild className="mb-4">
-              <Link href="/boards/msbshse/class-12/biology" className="flex items-center gap-2">
+              <Link href="/boards/msbshse/class-12/english/biology" className="flex items-center gap-2">
                 <ChevronLeft className="w-4 h-4" />
                 Back to Chapters
               </Link>
             </Button>
-            
+
             <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               Chapter 1: Reproduction in Lower and Higher Plants
             </h1>
@@ -113,13 +113,13 @@ export default function Chapter1Page() {
           {/* Chapter Navigation */}
           <div className="flex justify-between items-center my-12">
             <Button variant="outline" size="lg" asChild>
-              <Link href="/boards/msbshse/class-12/biology/introduction" className="flex items-center gap-2">
+              <Link href="/boards/msbshse/class-12/english/biology/introduction" className="flex items-center gap-2">
                 <ChevronLeft className="w-4 h-4" />
                 Previous Chapter
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="/boards/msbshse/class-12/biology/chapter-2" className="flex items-center gap-2">
+              <Link href="/boards/msbshse/class-12/english/biology/chapter-2" className="flex items-center gap-2">
                 Next Chapter
                 <ChevronRight className="w-4 h-4" />
               </Link>

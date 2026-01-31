@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Metadata } from "next";
 import Head from "next/head";
@@ -24,62 +24,16 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-const boards = {
-  state: [
-    { id: "msbshse", name: "Maharashtra State Board of Secondary and Higher Secondary Education (MSBSHSE)", color: "from-orange-500/20 to-red-500/20 dark:from-orange-500/30 dark:to-red-500/30" },
-    { id: "rbse", name: "Board of Secondary Education, Rajasthan (RBSE)", color: "from-amber-500/20 to-yellow-500/20 dark:from-amber-500/30 dark:to-yellow-500/30" },
-    { id: "up-board", name: "Uttar Pradesh Board of High School and Intermediate Education (UP Board)", color: "from-emerald-500/20 to-green-500/20 dark:from-emerald-500/30 dark:to-green-500/30" },
-    { id: "tn-board", name: "Tamil Nadu State Board of School Examination", color: "from-cyan-500/20 to-blue-500/20 dark:from-cyan-500/30 dark:to-blue-500/30" },
-    { id: "bseap", name: "Board of Secondary Education, Andhra Pradesh (BSEAP)", color: "from-violet-500/20 to-purple-500/20 dark:from-violet-500/30 dark:to-purple-500/30" },
-    { id: "wbbse", name: "West Bengal Board of Secondary Education (WBBSE)", color: "from-fuchsia-500/20 to-pink-500/20 dark:from-fuchsia-500/30 dark:to-pink-500/30" },
-  ],
-  national: [
-    { id: "cbse", name: "Central Board of Secondary Education (CBSE)", color: "from-blue-600/20 to-indigo-600/20 dark:from-blue-500/30 dark:to-indigo-500/30" },
-    { id: "cisce", name: "Council for the Indian School Certificate Examinations (CISCE) – ICSE & ISC", color: "from-sky-500/20 to-blue-500/20 dark:from-sky-500/30 dark:to-blue-500/30" },
-    { id: "nios", name: "National Institute of Open Schooling (NIOS)", color: "from-teal-500/20 to-emerald-500/20 dark:from-teal-500/30 dark:to-emerald-500/30" },
-  ],
-  international: [
-    { id: "ib", name: "International Baccalaureate (IB)", color: "from-violet-600/20 to-fuchsia-600/20 dark:from-violet-500/30 dark:to-fuchsia-500/30" },
-    { id: "caie", name: "Cambridge Assessment International Education (CAIE) – IGCSE", color: "from-rose-500/20 to-orange-500/20 dark:from-rose-500/30 dark:to-orange-500/30" },
-  ],
-};
+import { boards, classes, languages, subjects } from "@/lib/data";
 
-const classes = Array.from({ length: 12 }, (_, i) => ({
-  id: `class-${i + 1}`,
-  name: `Class ${i + 1}`,
-  color: `from-${['red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo'][i]}-500/20 to-${['orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet'][i]}-500/20 dark:from-${['red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo'][i]}-500/30 dark:to-${['orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet'][i]}-500/30`
-}));
-
-const languages = [
-  { id: "english", name: "English", color: "from-blue-500/20 to-cyan-500/20 dark:from-blue-500/30 dark:to-cyan-500/30" },
-  { id: "hindi", name: "Hindi", color: "from-orange-500/20 to-red-500/20 dark:from-orange-500/30 dark:to-red-500/30" },
-  { id: "marathi", name: "Marathi", color: "from-yellow-500/20 to-amber-500/20 dark:from-yellow-500/30 dark:to-amber-500/30" },
-  { id: "tamil", name: "Tamil", color: "from-green-500/20 to-emerald-500/20 dark:from-green-500/30 dark:to-emerald-500/30" },
-  { id: "telugu", name: "Telugu", color: "from-purple-500/20 to-violet-500/20 dark:from-purple-500/30 dark:to-violet-500/30" },
-  { id: "bengali", name: "Bengali", color: "from-pink-500/20 to-rose-500/20 dark:from-pink-500/30 dark:to-rose-500/30" },
-  { id: "gujarati", name: "Gujarati", color: "from-indigo-500/20 to-blue-500/20 dark:from-indigo-500/30 dark:to-blue-500/30" },
-  { id: "kannada", name: "Kannada", color: "from-teal-500/20 to-cyan-500/20 dark:from-teal-500/30 dark:to-cyan-500/30" },
-  { id: "malayalam", name: "Malayalam", color: "from-lime-500/20 to-green-500/20 dark:from-lime-500/30 dark:to-green-500/30" },
-];
-
-const subjects = [
-  { id: "mathematics", name: "Mathematics", color: "from-blue-500/20 to-indigo-500/20 dark:from-blue-500/30 dark:to-indigo-500/30" },
-  { id: "science", name: "Science", color: "from-green-500/20 to-emerald-500/20 dark:from-green-500/30 dark:to-emerald-500/30" },
-  { id: "english", name: "English", color: "from-purple-500/20 to-violet-500/20 dark:from-purple-500/30 dark:to-violet-500/30" },
-  { id: "social-studies", name: "Social Studies", color: "from-orange-500/20 to-amber-500/20 dark:from-orange-500/30 dark:to-amber-500/30" },
-  { id: "physics", name: "Physics", color: "from-cyan-500/20 to-blue-500/20 dark:from-cyan-500/30 dark:to-blue-500/30" },
-  { id: "chemistry", name: "Chemistry", color: "from-teal-500/20 to-cyan-500/20 dark:from-teal-500/30 dark:to-cyan-500/30" },
-  { id: "biology", name: "Biology", color: "from-lime-500/20 to-green-500/20 dark:from-lime-500/30 dark:to-green-500/30" },
-  { id: "computer-science", name: "Computer Science", color: "from-indigo-500/20 to-violet-500/20 dark:from-indigo-500/30 dark:to-violet-500/30" },
-  { id: "economics", name: "Economics", color: "from-rose-500/20 to-pink-500/20 dark:from-rose-500/30 dark:to-pink-500/30" },
-  { id: "business-studies", name: "Business Studies", color: "from-yellow-500/20 to-orange-500/20 dark:from-yellow-500/30 dark:to-orange-500/30" },
-];
+import { useSearchParams } from "next/navigation";
 
 export default function ExplorePage() {
-  const [selectedBoard, setSelectedBoard] = useState("");
-  const [selectedClass, setSelectedClass] = useState("");
-  const [selectedLanguage, setSelectedLanguage] = useState("");
-  const [selectedSubject, setSelectedSubject] = useState("");
+  const searchParams = useSearchParams();
+  const [selectedBoard, setSelectedBoard] = useState(searchParams.get("board") || "");
+  const [selectedClass, setSelectedClass] = useState(searchParams.get("class") || "");
+  const [selectedLanguage, setSelectedLanguage] = useState(searchParams.get("language") || "");
+  const [selectedSubject, setSelectedSubject] = useState(searchParams.get("subject") || "");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -97,26 +51,17 @@ export default function ExplorePage() {
     }
   }, [selectedBoard, selectedClass, selectedSubject]);
 
-  useEffect(() => {
-    setSelectedClass("");
-    setSelectedLanguage("");
-    setSelectedSubject("");
-  }, [selectedBoard]);
+  const isMounted = useRef(false);
 
   useEffect(() => {
-    setSelectedLanguage("");
-    setSelectedSubject("");
-  }, [selectedClass]);
-
-  useEffect(() => {
-    setSelectedSubject("");
-  }, [selectedLanguage]);
+    isMounted.current = true;
+  }, []);
 
   const handleProceed = async () => {
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsLoading(false);
-    window.location.href = `/solutions?board=${selectedBoard}&class=${selectedClass}&language=${selectedLanguage}&subject=${selectedSubject}`;
+    window.location.href = `/boards/${selectedBoard}/${selectedClass}/${selectedLanguage}/${selectedSubject}`;
   };
 
   const isComplete = selectedBoard && selectedClass && selectedLanguage && selectedSubject;
@@ -133,8 +78,8 @@ export default function ExplorePage() {
     <div className="text-sm text-muted-foreground mt-4">
       <span className="font-medium">Your Selection: </span>
       {[
-        selectedBoard && getBoardName(selectedBoard),
         selectedClass && classes.find(c => c.id === selectedClass)?.name,
+        selectedBoard && getBoardName(selectedBoard),
         selectedLanguage && languages.find(l => l.id === selectedLanguage)?.name,
         selectedSubject && subjects.find(s => s.id === selectedSubject)?.name,
       ]
@@ -169,12 +114,6 @@ export default function ExplorePage() {
         <title>Explore Educational Resources and Study Materials | EduHub</title>
         <meta name="description" content="Find comprehensive study solutions for various educational boards, classes, and subjects. Access quality educational resources, study materials, and more." />
         <meta name="keywords" content="education, study materials, CBSE, ICSE, state boards, online learning, educational resources" />
-        <meta property="og:title" content="Explore Educational Resources and Study Materials | EduHub" />
-        <meta property="og:description" content="Find comprehensive study solutions for various educational boards, classes, and subjects. Access quality educational resources, study materials, and more." />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Explore Educational Resources and Study Materials | EduHub" />
-        <meta name="twitter:description" content="Find comprehensive study solutions for various educational boards, classes, and subjects. Access quality educational resources, study materials, and more." />
         <link rel="canonical" href="https://eduhub.com/explore" />
       </Head>
 
@@ -187,30 +126,57 @@ export default function ExplorePage() {
         >
           <h1 className="text-4xl font-bold text-center mb-8">Select Your Course Details</h1>
 
-          <Card className="p-6 space-y-6">
-            <AnimatePresence mode="wait">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="space-y-2"
-              >
+          <Card className="p-8 space-y-8 bg-card/80 dark:bg-card/40 backdrop-blur-xl border-primary/10 shadow-2xl relative overflow-hidden">
+            {/* Decorative background gradients */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -ml-32 -mb-32 pointer-events-none" />
+
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Class Selection */}
+              <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium">Board</label>
+                  <label className="text-sm font-semibold tracking-wide text-foreground/80 uppercase">Class</label>
                   <TooltipProvider>
                     <Tooltip>
-                      <TooltipTrigger aria-label="Board Help">
-                        <HelpCircle className="h-4 w-4 text-muted-foreground" />
+                      <TooltipTrigger asChild>
+                        <HelpCircle className="h-4 w-4 text-muted-foreground hover:text-primary transition-colors cursor-help" />
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>Select your educational board</p>
+                        <p>Select your class level</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+                <Select value={selectedClass} onValueChange={setSelectedClass}>
+                  <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30">
+                    <SelectValue placeholder="Select Class" />
+                  </SelectTrigger>
+                  <SelectContent className="max-h-[50vh]">
+                    {classes.map((classLevel) => (
+                      <Option key={classLevel.id} item={classLevel} />
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Board Selection */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <label className="text-sm font-semibold tracking-wide text-foreground/80 uppercase">Board</label>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <HelpCircle className="h-4 w-4 text-muted-foreground hover:text-primary transition-colors cursor-help" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Select your educational board to unlock language options</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
                 </div>
                 <Select value={selectedBoard} onValueChange={setSelectedBoard}>
-                  <SelectTrigger aria-label="Select Board">
-                    <SelectValue placeholder="Select board" />
+                  <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30">
+                    <SelectValue placeholder="Select Board" />
                   </SelectTrigger>
                   <SelectContent className="max-h-[50vh]">
                     <SelectGroup>
@@ -235,134 +201,91 @@ export default function ExplorePage() {
                     </SelectGroup>
                   </SelectContent>
                 </Select>
+              </div>
+
+              {/* Language Selection - Dependent on Board */}
+              <motion.div
+                className={`space-y-3 ${!selectedBoard ? 'opacity-50 pointer-events-none grayscale' : ''} transition-all duration-300`}
+              >
+                <div className="flex items-center justify-between">
+                  <label className="text-sm font-semibold tracking-wide text-foreground/80 uppercase">Language Medium</label>
+                  {!selectedBoard && (
+                    <span className="text-xs text-primary font-medium bg-primary/10 px-2 py-0.5 rounded">Select Board First</span>
+                  )}
+                </div>
+                <Select
+                  value={selectedLanguage}
+                  onValueChange={setSelectedLanguage}
+                  disabled={!selectedBoard}
+                >
+                  <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30">
+                    <SelectValue placeholder="Select Language" />
+                  </SelectTrigger>
+                  <SelectContent className="max-h-[50vh]">
+                    {languages.map((language) => (
+                      <Option key={language.id} item={language} />
+                    ))}
+                  </SelectContent>
+                </Select>
               </motion.div>
+
+              {/* Subject Selection - Dependent on Language */}
+              <motion.div
+                className={`space-y-3 ${!selectedLanguage ? 'opacity-50 pointer-events-none grayscale' : ''} transition-all duration-300`}
+              >
+                <div className="flex items-center justify-between">
+                  <label className="text-sm font-semibold tracking-wide text-foreground/80 uppercase">Subject</label>
+                  {!selectedLanguage && (
+                    <span className="text-xs text-primary font-medium bg-primary/10 px-2 py-0.5 rounded">Select Language First</span>
+                  )}
+                </div>
+                <Select
+                  value={selectedSubject}
+                  onValueChange={setSelectedSubject}
+                  disabled={!selectedLanguage}
+                >
+                  <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30">
+                    <SelectValue placeholder="Select Subject" />
+                  </SelectTrigger>
+                  <SelectContent className="max-h-[50vh]">
+                    {subjects.map((subject) => (
+                      <Option key={subject.id} item={subject} />
+                    ))}
+                  </SelectContent>
+                </Select>
+              </motion.div>
+            </div>
+
+            <AnimatePresence>
+              {isComplete && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0, y: 10 }}
+                  animate={{ opacity: 1, height: "auto", y: 0 }}
+                  exit={{ opacity: 0, height: 0, y: 10 }}
+                  className="space-y-6 pt-4 border-t border-primary/5 overflow-hidden"
+                >
+                  <SelectionSummary />
+
+                  <div className="pt-2">
+                    <Button
+                      className="w-full h-12 text-lg font-semibold transition-all duration-300 hover:scale-[1.02]"
+                      size="lg"
+                      onClick={handleProceed}
+                      disabled={isLoading}
+                    >
+                      {isLoading ? (
+                        <div className="flex items-center gap-2">
+                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          Loading...
+                        </div>
+                      ) : (
+                        "View Study Solutions"
+                      )}
+                    </Button>
+                  </div>
+                </motion.div>
+              )}
             </AnimatePresence>
-
-            {selectedBoard && (
-              <AnimatePresence mode="wait">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className="space-y-2"
-                >
-                  <div className="flex items-center justify-between">
-                    <label className="text-sm font-medium">Class</label>
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger aria-label="Class Help">
-                          <HelpCircle className="h-4 w-4 text-muted-foreground" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Select your class level</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  </div>
-                  <Select value={selectedClass} onValueChange={setSelectedClass}>
-                    <SelectTrigger aria-label="Select Class">
-                      <SelectValue placeholder="Select class" />
-                    </SelectTrigger>
-                    <SelectContent className="max-h-[50vh]">
-                      {classes.map((classLevel) => (
-                        <Option key={classLevel.id} item={classLevel} />
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </motion.div>
-              </AnimatePresence>
-            )}
-
-            {selectedClass && (
-              <AnimatePresence mode="wait">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className="space-y-2"
-                >
-                  <div className="flex items-center justify-between">
-                    <label className="text-sm font-medium">Language Medium</label>
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger aria-label="Language Help">
-                          <HelpCircle className="h-4 w-4 text-muted-foreground" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Select your preferred language</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  </div>
-                  <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-                    <SelectTrigger aria-label="Select Language">
-                      <SelectValue placeholder="Select language" />
-                    </SelectTrigger>
-                    <SelectContent className="max-h-[50vh]">
-                      {languages.map((language) => (
-                        <Option key={language.id} item={language} />
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </motion.div>
-              </AnimatePresence>
-            )}
-
-            {selectedLanguage && (
-              <AnimatePresence mode="wait">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className="space-y-2"
-                >
-                  <div className="flex items-center justify-between">
-                    <label className="text-sm font-medium">Subject</label>
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger aria-label="Subject Help">
-                          <HelpCircle className="h-4 w-4 text-muted-foreground" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Select your subject</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  </div>
-                  <Select value={selectedSubject} onValueChange={setSelectedSubject}>
-                    <SelectTrigger aria-label="Select Subject">
-                      <SelectValue placeholder="Select subject" />
-                    </SelectTrigger>
-                    <SelectContent className="max-h-[50vh]">
-                      {subjects.map((subject) => (
-                        <Option key={subject.id} item={subject} />
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </motion.div>
-              </AnimatePresence>
-            )}
-
-            {selectedBoard && <SelectionSummary />}
-
-            {isComplete && (
-              <AnimatePresence mode="wait">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                >
-                  <Button
-                    className="w-full bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary transition-all duration-300"
-                    size="lg"
-                    onClick={handleProceed}
-                    disabled={!isComplete || isLoading}
-                  >
-                    {isLoading ? "Loading..." : "View Solutions"}
-                  </Button>
-                </motion.div>
-              </AnimatePresence>
-            )}
           </Card>
 
           <div className="mt-12 prose prose-sm max-w-none">

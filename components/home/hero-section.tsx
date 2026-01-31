@@ -76,6 +76,9 @@ export function HeroSection() {
                     </Link>
                 </motion.div>
             </div>
+
+            {/* Bottom fade for smooth transition */}
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-black to-transparent pointer-events-none z-10" />
         </section>
     );
 }
