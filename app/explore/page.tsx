@@ -199,7 +199,7 @@ export default function ExplorePage() {
                   <label className="text-sm font-medium">Board</label>
                   <TooltipProvider>
                     <Tooltip>
-                      <TooltipTrigger>
+                      <TooltipTrigger aria-label="Board Help">
                         <HelpCircle className="h-4 w-4 text-muted-foreground" />
                       </TooltipTrigger>
                       <TooltipContent>
@@ -209,7 +209,7 @@ export default function ExplorePage() {
                   </TooltipProvider>
                 </div>
                 <Select value={selectedBoard} onValueChange={setSelectedBoard}>
-                  <SelectTrigger>
+                  <SelectTrigger aria-label="Select Board">
                     <SelectValue placeholder="Select board" />
                   </SelectTrigger>
                   <SelectContent className="max-h-[50vh]">
@@ -250,7 +250,7 @@ export default function ExplorePage() {
                     <label className="text-sm font-medium">Class</label>
                     <TooltipProvider>
                       <Tooltip>
-                        <TooltipTrigger>
+                        <TooltipTrigger aria-label="Class Help">
                           <HelpCircle className="h-4 w-4 text-muted-foreground" />
                         </TooltipTrigger>
                         <TooltipContent>
@@ -260,7 +260,7 @@ export default function ExplorePage() {
                     </TooltipProvider>
                   </div>
                   <Select value={selectedClass} onValueChange={setSelectedClass}>
-                    <SelectTrigger>
+                    <SelectTrigger aria-label="Select Class">
                       <SelectValue placeholder="Select class" />
                     </SelectTrigger>
                     <SelectContent className="max-h-[50vh]">
@@ -285,7 +285,7 @@ export default function ExplorePage() {
                     <label className="text-sm font-medium">Language Medium</label>
                     <TooltipProvider>
                       <Tooltip>
-                        <TooltipTrigger>
+                        <TooltipTrigger aria-label="Language Help">
                           <HelpCircle className="h-4 w-4 text-muted-foreground" />
                         </TooltipTrigger>
                         <TooltipContent>
@@ -295,7 +295,7 @@ export default function ExplorePage() {
                     </TooltipProvider>
                   </div>
                   <Select value={selectedLanguage} onValueChange={setSelectedLanguage}>
-                    <SelectTrigger>
+                    <SelectTrigger aria-label="Select Language">
                       <SelectValue placeholder="Select language" />
                     </SelectTrigger>
                     <SelectContent className="max-h-[50vh]">
@@ -320,7 +320,7 @@ export default function ExplorePage() {
                     <label className="text-sm font-medium">Subject</label>
                     <TooltipProvider>
                       <Tooltip>
-                        <TooltipTrigger>
+                        <TooltipTrigger aria-label="Subject Help">
                           <HelpCircle className="h-4 w-4 text-muted-foreground" />
                         </TooltipTrigger>
                         <TooltipContent>
@@ -330,7 +330,7 @@ export default function ExplorePage() {
                     </TooltipProvider>
                   </div>
                   <Select value={selectedSubject} onValueChange={setSelectedSubject}>
-                    <SelectTrigger>
+                    <SelectTrigger aria-label="Select Subject">
                       <SelectValue placeholder="Select subject" />
                     </SelectTrigger>
                     <SelectContent className="max-h-[50vh]">
