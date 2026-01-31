@@ -113,7 +113,7 @@ export function ExploreClient() {
                         {/* Class Selection */}
                         <div className="space-y-3">
                             <div className="flex items-center justify-between">
-                                <label className="text-sm font-semibold tracking-wide text-foreground/80 uppercase">Class</label>
+                                <label className="text-sm font-semibold tracking-wide text-foreground uppercase">Class</label>
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger asChild>
@@ -126,7 +126,7 @@ export function ExploreClient() {
                                 </TooltipProvider>
                             </div>
                             <Select value={selectedClass} onValueChange={setSelectedClass}>
-                                <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30">
+                                <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30" aria-label="Select Class">
                                     <SelectValue placeholder="Select Class" />
                                 </SelectTrigger>
                                 <SelectContent className="max-h-[50vh]">
@@ -140,7 +140,7 @@ export function ExploreClient() {
                         {/* Board Selection */}
                         <div className="space-y-3">
                             <div className="flex items-center justify-between">
-                                <label className="text-sm font-semibold tracking-wide text-foreground/80 uppercase">Board</label>
+                                <label className="text-sm font-semibold tracking-wide text-foreground uppercase">Board</label>
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger asChild>
@@ -153,7 +153,7 @@ export function ExploreClient() {
                                 </TooltipProvider>
                             </div>
                             <Select value={selectedBoard} onValueChange={setSelectedBoard}>
-                                <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30">
+                                <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30" aria-label="Select Board">
                                     <SelectValue placeholder="Select Board" />
                                 </SelectTrigger>
                                 <SelectContent className="max-h-[50vh]">
@@ -184,9 +184,9 @@ export function ExploreClient() {
                         {/* Language Selection - Dependent on Board */}
                         <div className={`space-y-3 ${!selectedBoard ? 'opacity-50 pointer-events-none grayscale' : ''} transition-all duration-300`}>
                             <div className="flex items-center justify-between">
-                                <label className="text-sm font-semibold tracking-wide text-foreground/80 uppercase">Language Medium</label>
+                                <label className="text-sm font-semibold tracking-wide text-foreground uppercase">Language Medium</label>
                                 {!selectedBoard && (
-                                    <span className="text-xs text-primary font-medium bg-primary/10 px-2 py-0.5 rounded">Select Board First</span>
+                                    <span className="text-xs font-medium bg-secondary text-secondary-foreground px-2 py-0.5 rounded">Select Board First</span>
                                 )}
                             </div>
                             <Select
@@ -194,7 +194,7 @@ export function ExploreClient() {
                                 onValueChange={setSelectedLanguage}
                                 disabled={!selectedBoard}
                             >
-                                <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30">
+                                <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30" aria-label="Select Language">
                                     <SelectValue placeholder="Select Language" />
                                 </SelectTrigger>
                                 <SelectContent className="max-h-[50vh]">
@@ -208,9 +208,9 @@ export function ExploreClient() {
                         {/* Subject Selection - Dependent on Language */}
                         <div className={`space-y-3 ${!selectedLanguage ? 'opacity-50 pointer-events-none grayscale' : ''} transition-all duration-300`}>
                             <div className="flex items-center justify-between">
-                                <label className="text-sm font-semibold tracking-wide text-foreground/80 uppercase">Subject</label>
+                                <label className="text-sm font-semibold tracking-wide text-foreground uppercase">Subject</label>
                                 {!selectedLanguage && (
-                                    <span className="text-xs text-primary font-medium bg-primary/10 px-2 py-0.5 rounded">Select Language First</span>
+                                    <span className="text-xs font-medium bg-secondary text-secondary-foreground px-2 py-0.5 rounded">Select Language First</span>
                                 )}
                             </div>
                             <Select
@@ -218,7 +218,7 @@ export function ExploreClient() {
                                 onValueChange={setSelectedSubject}
                                 disabled={!selectedLanguage}
                             >
-                                <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30">
+                                <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30" aria-label="Select Subject">
                                     <SelectValue placeholder="Select Subject" />
                                 </SelectTrigger>
                                 <SelectContent className="max-h-[50vh]">

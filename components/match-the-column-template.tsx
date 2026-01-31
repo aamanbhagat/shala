@@ -84,7 +84,7 @@ export function MatchTheColumnTemplate({ data }: { data: MatchTheColumnData }) {
                             </div>
 
                             <div className="p-3 md:p-6">
-                                <h3 className="font-medium mb-4 px-1">Match the column:</h3>
+                                <h2 className="text-xl font-medium mb-4 px-1">Match the column:</h2>
                                 <div className="border rounded-lg overflow-hidden">
                                     <div className="grid grid-cols-2 bg-muted/50 border-b divide-x">
                                         <div className="p-2 md:p-3 font-semibold text-center text-sm md:text-base">Column 'A'</div>
@@ -98,7 +98,7 @@ export function MatchTheColumnTemplate({ data }: { data: MatchTheColumnData }) {
                                                 <div className="p-2 md:p-3 text-xs md:text-sm flex gap-2 md:gap-3 items-start">
                                                     {data.question.columnA[index] && (
                                                         <>
-                                                            <span className="font-medium text-muted-foreground">({index + 1})</span>
+                                                            <span className="font-bold text-primary">({index + 1})</span>
                                                             <span><Latex>{data.question.columnA[index]}</Latex></span>
                                                         </>
                                                     )}
@@ -106,7 +106,7 @@ export function MatchTheColumnTemplate({ data }: { data: MatchTheColumnData }) {
                                                 <div className="p-2 md:p-3 text-xs md:text-sm flex gap-2 md:gap-3 items-start">
                                                     {data.question.columnB[index] && (
                                                         <>
-                                                            <span className="font-medium text-muted-foreground">({String.fromCharCode(97 + index)})</span>
+                                                            <span className="font-bold text-primary">({String.fromCharCode(97 + index)})</span>
                                                             <span><Latex>{data.question.columnB[index]}</Latex></span>
                                                         </>
                                                     )}
@@ -146,11 +146,11 @@ export function MatchTheColumnTemplate({ data }: { data: MatchTheColumnData }) {
                                                     return (
                                                         <div key={index} className="grid grid-cols-2 divide-x divide-green-100 dark:divide-green-800 hover:bg-green-50/30 dark:hover:bg-green-900/10 transition-colors">
                                                             <div className="p-3 text-sm flex gap-3 items-start text-green-900 dark:text-green-100">
-                                                                <span className="font-medium opacity-70">({index + 1})</span>
+                                                                <span className="font-bold text-green-900 dark:text-green-100">({index + 1})</span>
                                                                 <span><Latex>{leftContent}</Latex></span>
                                                             </div>
                                                             <div className="p-3 text-sm flex gap-3 items-start font-medium text-green-700 dark:text-green-300">
-                                                                <span className="font-medium opacity-70">
+                                                                <span className="font-bold text-green-900 dark:text-green-100">
                                                                     ({String.fromCharCode(97 + data.question.columnB.indexOf(pair.right))})
                                                                 </span>
                                                                 <span><Latex>{pair.right}</Latex></span>

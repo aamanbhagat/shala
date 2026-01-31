@@ -9,41 +9,9 @@ import {
     HelpCircle,
     ClipboardList,
     BookText,
-    Pencil,
-    School,
-    Award,
-    Trophy,
 } from "lucide-react";
 
 const features = [
-    {
-        title: "Class 1-4",
-        description: "Find foundational resources for young learners.",
-        icon: Pencil,
-        color: "text-red-500",
-        href: "/primary",
-    },
-    {
-        title: "Class 5-8",
-        description: "Bridge primary to secondary learning with structured materials.",
-        icon: School,
-        color: "text-cyan-500",
-        href: "/middle",
-    },
-    {
-        title: "Class 9-10",
-        description: "Prepare for board exams with curated study notes and question banks.",
-        icon: Award,
-        color: "text-orange-500",
-        href: "/secondary",
-    },
-    {
-        title: "Class 11-12",
-        description: "Advanced resources for senior secondary classes, including entrance exam prep.",
-        icon: Trophy,
-        color: "text-emerald-500",
-        href: "/senior",
-    },
     {
         title: "Question Bank",
         description: "Access thousands of questions with step-by-step solutions for practice.",
