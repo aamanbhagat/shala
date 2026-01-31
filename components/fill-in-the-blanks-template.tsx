@@ -89,12 +89,12 @@ export function FillInTheBlanksTemplate({ data }: { data: QuestionData }) {
                                                 } transition-all`}
                                         >
                                             <div className="flex items-center space-x-3">
-                                                <span className={`text-sm font-medium ${index === data.correctAnswerIndex ? 'text-green-600 dark:text-green-400' : ''
+                                                <span className={`text-sm font-medium ${index === data.correctAnswerIndex ? 'text-green-900 dark:text-green-100' : ''
                                                     }`}>
                                                     {String.fromCharCode(65 + index)}.
                                                 </span>
                                                 <span className={
-                                                    index === data.correctAnswerIndex ? 'text-green-600 dark:text-green-400 font-medium' : ''
+                                                    index === data.correctAnswerIndex ? 'text-green-900 dark:text-green-100 font-medium' : ''
                                                 }>
                                                     <Latex>{option}</Latex>
                                                 </span>
@@ -110,8 +110,8 @@ export function FillInTheBlanksTemplate({ data }: { data: QuestionData }) {
                                     className="mt-8"
                                 >
                                     <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-900 mb-6">
-                                        <h3 className="font-semibold text-green-600 dark:text-green-400 mb-2">Correct Answer:</h3>
-                                        <div className="text-green-600 dark:text-green-400">
+                                        <h2 className="font-semibold text-green-900 dark:text-green-100 mb-2">Correct Answer:</h2>
+                                        <div className="text-green-900 dark:text-green-100">
                                             <Latex>{data.question.replace('_________', data.options[data.correctAnswerIndex])}</Latex>
                                         </div>
                                     </div>

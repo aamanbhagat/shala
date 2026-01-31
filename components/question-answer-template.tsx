@@ -91,10 +91,10 @@ export function QuestionAnswerTemplate({ data }: { data: QuestionAnswerData }) {
                                         Solution
                                     </span>
                                     <div className="flex space-x-2">
-                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-green-600">
+                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-green-600" aria-label="Share solution">
                                             <Share2 className="h-4 w-4" />
                                         </Button>
-                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-green-600">
+                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-green-600" aria-label="Bookmark solution">
                                             <Bookmark className="h-4 w-4" />
                                         </Button>
                                     </div>
@@ -163,7 +163,7 @@ export function QuestionAnswerTemplate({ data }: { data: QuestionAnswerData }) {
                                     <Link key={i} href="#" className="block group">
                                         <Card className="h-full p-5 transition-all duration-200 hover:shadow-md hover:border-primary/50 group-hover:-translate-y-1">
                                             <div className="flex items-start gap-3">
-                                                <span className="text-xs font-bold text-muted-foreground bg-secondary px-2 py-1 rounded group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                                                <span className="text-xs font-bold text-secondary-foreground bg-secondary px-2 py-1 rounded group-hover:bg-primary/10 group-hover:text-primary transition-colors">
                                                     Q{i + 1}
                                                 </span>
                                                 <p className="text-sm font-medium leading-relaxed line-clamp-2">
