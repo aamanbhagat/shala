@@ -105,10 +105,6 @@ export function ExploreClient() {
                 <h1 className="text-4xl font-bold text-center mb-8">Select Your Course Details</h1>
 
                 <Card className="p-8 space-y-8 bg-card dark:bg-card border-primary/10 shadow-2xl relative overflow-hidden">
-                    {/* Decorative background gradients */}
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none" />
-                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -ml-32 -mb-32 pointer-events-none" />
-
                     <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8">
                         {/* Class Selection */}
                         <div className="space-y-3">
@@ -186,7 +182,7 @@ export function ExploreClient() {
                             <div className="flex items-center justify-between">
                                 <label className="text-sm font-semibold tracking-wide text-foreground uppercase">Language Medium</label>
                                 {!selectedBoard && (
-                                    <span className="text-xs font-bold bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100 px-2 py-0.5 rounded">Select Board First</span>
+                                    <span className="text-xs font-bold bg-zinc-900 text-zinc-50 dark:bg-zinc-50 dark:text-zinc-900 px-2 py-0.5 rounded">Select Board First</span>
                                 )}
                             </div>
                             <Select
@@ -210,7 +206,7 @@ export function ExploreClient() {
                             <div className="flex items-center justify-between">
                                 <label className="text-sm font-semibold tracking-wide text-foreground uppercase">Subject</label>
                                 {!selectedLanguage && (
-                                    <span className="text-xs font-bold bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100 px-2 py-0.5 rounded">Select Language First</span>
+                                    <span className="text-xs font-bold bg-zinc-900 text-zinc-50 dark:bg-zinc-50 dark:text-zinc-900 px-2 py-0.5 rounded">Select Language First</span>
                                 )}
                             </div>
                             <Select
