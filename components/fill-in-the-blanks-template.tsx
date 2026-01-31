@@ -168,7 +168,7 @@ export function FillInTheBlanksTemplate({ data }: { data: QuestionData }) {
                                             className="pt-4 first:pt-0"
                                         >
                                             <Link
-                                                href={`${data.backLink}/question-${index + 1}`} // Mock link
+                                                href="#"
                                                 className="flex items-start space-x-3 group"
                                             >
                                                 <span className="text-primary font-medium">{index + 1}.</span>

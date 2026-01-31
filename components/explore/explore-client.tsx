@@ -104,7 +104,7 @@ export function ExploreClient() {
             >
                 <h1 className="text-4xl font-bold text-center mb-8">Select Your Course Details</h1>
 
-                <Card className="p-8 space-y-8 bg-card dark:bg-card/40 border-primary/10 shadow-2xl relative overflow-hidden">
+                <Card className="p-8 space-y-8 bg-card dark:bg-card border-primary/10 shadow-2xl relative overflow-hidden">
                     {/* Decorative background gradients */}
                     <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none" />
                     <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -ml-32 -mb-32 pointer-events-none" />
@@ -126,7 +126,7 @@ export function ExploreClient() {
                                 </TooltipProvider>
                             </div>
                             <Select value={selectedClass} onValueChange={setSelectedClass}>
-                                <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30" aria-label="Select Class">
+                                <SelectTrigger className="h-12 border-primary/10 bg-background focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30" aria-label="Select Class">
                                     <SelectValue placeholder="Select Class" />
                                 </SelectTrigger>
                                 <SelectContent className="max-h-[50vh]">
@@ -153,7 +153,7 @@ export function ExploreClient() {
                                 </TooltipProvider>
                             </div>
                             <Select value={selectedBoard} onValueChange={setSelectedBoard}>
-                                <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30" aria-label="Select Board">
+                                <SelectTrigger className="h-12 border-primary/10 bg-background focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30" aria-label="Select Board">
                                     <SelectValue placeholder="Select Board" />
                                 </SelectTrigger>
                                 <SelectContent className="max-h-[50vh]">
@@ -194,7 +194,7 @@ export function ExploreClient() {
                                 onValueChange={setSelectedLanguage}
                                 disabled={!selectedBoard}
                             >
-                                <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30" aria-label="Select Language">
+                                <SelectTrigger className="h-12 border-primary/10 bg-background focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30" aria-label="Select Language">
                                     <SelectValue placeholder="Select Language" />
                                 </SelectTrigger>
                                 <SelectContent className="max-h-[50vh]">
@@ -218,7 +218,7 @@ export function ExploreClient() {
                                 onValueChange={setSelectedSubject}
                                 disabled={!selectedLanguage}
                             >
-                                <SelectTrigger className="h-12 border-primary/10 bg-background/50 focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30" aria-label="Select Subject">
+                                <SelectTrigger className="h-12 border-primary/10 bg-background focus:ring-primary/20 transition-all hover:bg-background/80 hover:border-primary/30" aria-label="Select Subject">
                                     <SelectValue placeholder="Select Subject" />
                                 </SelectTrigger>
                                 <SelectContent className="max-h-[50vh]">
