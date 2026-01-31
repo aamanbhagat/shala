@@ -132,21 +132,21 @@ export function FillInTheBlanksTemplate({ data }: { data: QuestionData }) {
                         </Card>
 
                         {/* Navigation Buttons */}
-                        <div className="flex justify-between items-center mb-8">
-                            <Button variant="outline" size="lg" asChild>
+                        <div className="flex justify-between items-center gap-2 mb-8">
+                            <Button variant="outline" size="lg" className="px-3 md:px-6" asChild>
                                 <Link href={data.previousLink} className="flex items-center gap-2">
                                     <ChevronLeft className="w-4 h-4" />
-                                    Previous
+                                    <span className="text-sm md:text-base">Previous</span>
                                 </Link>
                             </Button>
-                            <Button variant="ghost" asChild>
-                                <Link href={data.backLink} className="flex items-center gap-2">
+                            <Button variant="ghost" className="hidden md:flex tracking-wide uppercase text-xs font-bold text-muted-foreground hover:text-primary" asChild>
+                                <Link href={data.backLink}>
                                     Back to Chapter
                                 </Link>
                             </Button>
-                            <Button variant="outline" size="lg" asChild>
+                            <Button variant="outline" size="lg" className="px-3 md:px-6" asChild>
                                 <Link href={data.nextLink} className="flex items-center gap-2">
-                                    Next
+                                    <span className="text-sm md:text-base">Next</span>
                                     <ChevronRight className="w-4 h-4" />
                                 </Link>
                             </Button>
