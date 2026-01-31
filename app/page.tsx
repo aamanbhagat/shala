@@ -1,7 +1,7 @@
 import { HeroSection } from "@/components/home/hero-section";
 import { FeaturesSection } from "@/components/home/features-section";
-import { StatsSection } from "@/components/home/stats-section";
-import { CTASection } from "@/components/home/cta-section";
+
+
 import { ClassSelectionSection } from "@/components/home/class-selection-section";
 import { Metadata } from "next";
 
@@ -16,8 +16,8 @@ export default function Home() {
       <HeroSection />
       <ClassSelectionSection />
       <FeaturesSection />
-      <StatsSection />
-      <CTASection />
+
+
     </div>
   );
 }
