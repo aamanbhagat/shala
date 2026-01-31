@@ -138,23 +138,27 @@ export function MatchTheColumnTemplate({ data }: { data: MatchTheColumnData }) {
                                             <div className="p-3 font-semibold text-center text-green-800 dark:text-green-300">Column 'B'</div>
                                         </div>
                                         <div className="divide-y divide-green-100 dark:divide-green-800">
-                                            {data.pairs.map((pair, index) => (
-                                                <div key={pair.id} className="grid grid-cols-2 divide-x divide-green-100 dark:divide-green-800 hover:bg-green-50/30 dark:hover:bg-green-900/10 transition-colors">
-                                                    <div className="p-3 text-sm flex gap-3 items-start text-green-900 dark:text-green-100">
-                                                        <span className="font-medium opacity-70">({index + 1})</span>
-                                                        <span><Latex>{pair.left}</Latex></span>
-                                                    </div>
-                                                    <div className="p-3 text-sm flex gap-3 items-start font-medium text-green-700 dark:text-green-300">
-                                                        {/* We find the letter index from the original question column B if possible, or just bullet it? 
-                                                            Usually solutions show " (c) AnswerText ". 
-                                                         */}
-                                                        <span className="font-medium opacity-70">
-                                                            ({String.fromCharCode(97 + data.question.columnB.indexOf(pair.right))})
-                                                        </span>
-                                                        <span><Latex>{pair.right}</Latex></span>
-                                                    </div>
-                                                </div>
-                                            ))}
+                                            <div className="divide-y divide-green-100 dark:divide-green-800">
+                                                {data.question.columnA.map((leftContent, index) => {
+                                                    const pair = data.pairs.find(p => p.left === leftContent);
+                                                    if (!pair) return null;
+
+                                                    return (
+                                                        <div key={index} className="grid grid-cols-2 divide-x divide-green-100 dark:divide-green-800 hover:bg-green-50/30 dark:hover:bg-green-900/10 transition-colors">
+                                                            <div className="p-3 text-sm flex gap-3 items-start text-green-900 dark:text-green-100">
+                                                                <span className="font-medium opacity-70">({index + 1})</span>
+                                                                <span><Latex>{leftContent}</Latex></span>
+                                                            </div>
+                                                            <div className="p-3 text-sm flex gap-3 items-start font-medium text-green-700 dark:text-green-300">
+                                                                <span className="font-medium opacity-70">
+                                                                    ({String.fromCharCode(97 + data.question.columnB.indexOf(pair.right))})
+                                                                </span>
+                                                                <span><Latex>{pair.right}</Latex></span>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
                                         </div>
                                     </div>
 
