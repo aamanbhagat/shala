@@ -75,7 +75,7 @@ export function ExploreClient() {
     );
 
     const CategoryLabel = ({ children, icon: Icon }: { children: React.ReactNode; icon: any }) => (
-        <SelectLabel className="flex items-center gap-2 text-base font-bold bg-muted shadow-sm py-3 px-3 border-y border-border sticky top-0 z-20 text-primary">
+        <SelectLabel className="flex items-center gap-2 text-base font-bold bg-muted shadow-sm py-3 px-3 border-y border-border text-primary">
             <Icon className="w-4 h-4 text-primary" />
             {children}
         </SelectLabel>
