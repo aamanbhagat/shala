@@ -38,15 +38,15 @@ const Footer = () => {
               <Link href="/careers" className="hover:text-primary transition-colors">Careers</Link>
             </div>
           </div>
-          
+
           {/* Social Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
             <div className="grid grid-cols-5 gap-4">
               {socialLinks.map((social) => (
-                <Link 
-                  key={social.label} 
-                  href={social.href} 
+                <Link
+                  key={social.label}
+                  href={social.href}
                   className="hover:text-primary transition-colors transform hover:scale-110"
                   title={social.label}
                 >
@@ -56,17 +56,17 @@ const Footer = () => {
               ))}
             </div>
           </div>
-          
+
           {/* Newsletter */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
             <div className="space-y-2">
-              <Input type="email" placeholder="Enter your email" />
+              <Input type="email" placeholder="Enter your email" aria-label="Email address for newsletter" />
               <Button className="w-full">Subscribe</Button>
             </div>
           </div>
         </div>
-        
+
         <div className="mt-6 border-t pt-6 text-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} EduHub. All rights reserved.</p>
         </div>

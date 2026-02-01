@@ -55,12 +55,12 @@ export function ClassSelectionSection() {
                                 <Card className={`h-full p-6 text-center hover:shadow-xl transition-all duration-300 group border-none bg-gradient-to-br ${cls.color} relative overflow-hidden`}>
                                     <div className="relative z-10 flex flex-col items-center justify-center min-h-[120px]">
                                         <div className="w-12 h-12 bg-white/20 dark:bg-black/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                                            <span className="text-xl font-bold text-foreground opacity-80">{index + 1}</span>
+                                            <span className="text-xl font-bold text-foreground">{index + 1}</span>
                                         </div>
-                                        <h3 className="text-xl font-bold mb-1 opacity-90 group-hover:opacity-100 transition-opacity">
+                                        <h3 className="text-xl font-bold mb-1 text-foreground">
                                             {cls.name}
                                         </h3>
-                                        <p className="text-xs font-medium opacity-60 uppercase tracking-widest mb-4">
+                                        <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-4">
                                             Grade
                                         </p>
                                         <div className="w-8 h-8 rounded-full bg-white/30 dark:bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">

@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { 
-  Menu, 
-  X, 
-  GraduationCap, 
-  ChevronDown, 
+import {
+  Menu,
+  X,
+  GraduationCap,
+  ChevronDown,
   Search,
   Calculator,
   FlaskConical,
@@ -173,6 +173,7 @@ const Header = () => {
                   className="pl-8 w-[180px] h-8"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label="Search items"
                 />
                 <Search className="absolute left-2.5 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               </form>
@@ -223,6 +224,7 @@ const Header = () => {
                     className="w-full"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
+                    aria-label="Search items"
                   />
                 </form>
                 <Button className="w-full" variant="outline" size="sm">Sign In</Button>
