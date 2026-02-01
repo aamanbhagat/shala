@@ -8,6 +8,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "EduHub - Your Complete Study Companion",
   description: "Access comprehensive educational resources, study solutions, and exam prep materials for Class 1-12 and competitive exams.",
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function Home() {
