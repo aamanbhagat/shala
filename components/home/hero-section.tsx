@@ -1,56 +1,27 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 
 export function HeroSection() {
-    const { theme, resolvedTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
     return (
         <section className="relative overflow-hidden py-16 md:py-20 bg-white dark:bg-black transition-colors duration-300">
             {/* Grid Background */}
-            {mounted && (
-                <div className="absolute inset-0 bg-white dark:bg-black">
-                    <div
-                        className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)]"
-                        style={{ opacity: 0.4 }}
-                    />
-                </div>
-            )}
+            <div className="absolute inset-0 bg-white dark:bg-black">
+                <div
+                    className="absolute inset-0 bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-40"
+                />
+            </div>
 
             <div className="container relative z-10 mx-auto px-4 text-center">
-                <motion.h1
-                    className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-white leading-tight dark:drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
+                <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 dark:text-white leading-tight dark:drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] animate-fade-in-up">
                     All Your Study Solutions for{" "}
                     <span className="relative bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(34,211,238,0.5)]">
                         Smarter Decisions
                     </span>
-                </motion.h1>
-                <motion.p
-                    className="text-base md:text-lg lg:text-xl mb-8 max-w-2xl mx-auto font-normal text-gray-600 dark:text-gray-400 leading-relaxed"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                >
+                </h1>
+                <p className="text-base md:text-lg lg:text-xl mb-8 max-w-2xl mx-auto font-normal text-gray-600 dark:text-gray-400 leading-relaxed animate-fade-in-up [animation-delay:100ms] opacity-0 fill-mode-forwards">
                     Access our suite of educational resources to plan your studies, analyze your performance, and make informed academic decisions with confidence.
-                </motion.p>
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                >
+                </p>
+                <div className="animate-fade-in-up [animation-delay:200ms] opacity-0 fill-mode-forwards">
                     <Link href="/explore">
                         <Button
                             size="lg"
@@ -74,7 +45,7 @@ export function HeroSection() {
                             </span>
                         </Button>
                     </Link>
-                </motion.div>
+                </div>
             </div>
 
             {/* Bottom fade for smooth transition */}
