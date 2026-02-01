@@ -25,11 +25,80 @@ export const getAllBoards = () => {
     return [...boards.national, ...boards.state, ...boards.international];
 };
 
-export const classes = Array.from({ length: 12 }, (_, i) => ({
-    id: `class-${i + 1}`,
-    name: `Class ${i + 1}`,
-    color: `from-${['red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo'][i]}-500/20 to-${['orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet'][i]}-500/20 dark:from-${['red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo'][i]}-500/30 dark:to-${['orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet'][i]}-500/30`
-}));
+export const classes = [
+    {
+        id: "class-1",
+        name: "Class 1",
+        color: "from-yellow-500/40 to-orange-500/40 dark:from-yellow-500/30 dark:to-orange-500/30",
+        description: "Foundational learning focused on play and curiosity (Yellow/Orange for Joy & Energy)"
+    },
+    {
+        id: "class-2",
+        name: "Class 2",
+        color: "from-orange-500/40 to-red-500/40 dark:from-orange-500/30 dark:to-red-500/30",
+        description: "Active learning and exploration (Orange/Red for Creativity & Action)"
+    },
+    {
+        id: "class-3",
+        name: "Class 3",
+        color: "from-red-500/40 to-pink-500/40 dark:from-red-500/30 dark:to-pink-500/30",
+        description: "Social and expressive development (Red/Pink for Passion & Confidence)"
+    },
+    {
+        id: "class-4",
+        name: "Class 4",
+        color: "from-pink-500/40 to-purple-500/40 dark:from-pink-500/30 dark:to-purple-500/30",
+        description: "Expanding imagination and creativity (Pink/Purple for Imagination & Warmth)"
+    },
+    {
+        id: "class-5",
+        name: "Class 5",
+        color: "from-purple-500/40 to-indigo-500/40 dark:from-purple-500/30 dark:to-indigo-500/30",
+        description: "Building wisdom and critical thinking (Purple/Indigo for Wisdom & Ambition)"
+    },
+    {
+        id: "class-6",
+        name: "Class 6",
+        color: "from-indigo-500/40 to-blue-500/40 dark:from-indigo-500/30 dark:to-blue-500/30",
+        description: "Logical reasoning and structure (Indigo/Blue for Mystery & Trust)"
+    },
+    {
+        id: "class-7",
+        name: "Class 7",
+        color: "from-blue-500/40 to-sky-500/40 dark:from-blue-500/30 dark:to-sky-500/30",
+        description: "Developing trust and stability (Blue/Sky for Trust & Intelligence)"
+    },
+    {
+        id: "class-8",
+        name: "Class 8",
+        color: "from-sky-500/40 to-cyan-500/40 dark:from-sky-500/30 dark:to-cyan-500/30",
+        description: "Calmness and open communication (Sky/Cyan for Stability & Communication)"
+    },
+    {
+        id: "class-9",
+        name: "Class 9",
+        color: "from-cyan-500/40 to-teal-500/40 dark:from-cyan-500/30 dark:to-teal-500/30",
+        description: "Balance and clarity of thought (Pre-Boards) (Cyan/Teal for Balance & Clarity)"
+    },
+    {
+        id: "class-10",
+        name: "Class 10",
+        color: "from-teal-500/40 to-emerald-500/40 dark:from-teal-500/30 dark:to-emerald-500/30",
+        description: "Growth, harmony, and major milestones (Boards) (Teal/Emerald for Growth & Harmony)"
+    },
+    {
+        id: "class-11",
+        name: "Class 11",
+        color: "from-emerald-500/40 to-green-500/40 dark:from-emerald-500/30 dark:to-green-500/30",
+        description: "New beginnings and vitality (Emerald/Green for Success & Prosperity)"
+    },
+    {
+        id: "class-12",
+        name: "Class 12",
+        color: "from-green-500/40 to-lime-500/40 dark:from-green-500/30 dark:to-lime-500/30",
+        description: "Mastery, accomplishment, and future readiness (Green/Lime for Vision & Freshness)"
+    },
+];
 
 export const languages = [
     { id: "english", name: "English", color: "from-blue-500/20 to-cyan-500/20 dark:from-blue-500/30 dark:to-cyan-500/30" },
